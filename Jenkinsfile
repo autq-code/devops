@@ -10,7 +10,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('my-nginx-html', 'devops/hola-mundo/')
+                    docker.build('my-nginx-html', 'nginx/hola-mundo/')
                 }
             }
         }
