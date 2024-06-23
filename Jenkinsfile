@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'http://localhost:7990/projects/ngin/repos/nginx.git'
+                git 'http://172.24.0.6:7990/projects/ngin/repos/nginx.git'
             }
         }
         stage('Build Docker Image') {
