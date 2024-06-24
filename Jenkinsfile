@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'http://172.24.0.6:7990/projects/ngin/repos/nginx.git'
+                git branch: 'main', url: 'https://github.com/autq-code/devops.git'
             }
         }
         stage('Build Docker Image') {
