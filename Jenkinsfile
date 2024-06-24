@@ -9,8 +9,10 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build('my-nginx-html', 'nginx/hola-mundo/')
+                dir('nginx/hola-mundo') {
+                    script {
+                        docker.build('my-nginx-html', '.')
+                    }
                 }
             }
         }
@@ -37,4 +39,3 @@ pipeline {
         }
     }
 }
-
