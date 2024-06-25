@@ -24,7 +24,6 @@ pipeline {
         stage('Scan Docker Image') {
             steps {
                 script {
-                    sh 'pwd'
                     sh '''
                     if ! command -v trivy &> /dev/null
                     then
@@ -33,6 +32,7 @@ pipeline {
                         mv trivy /usr/local/bin/
                     fi
                     '''
+                    sh 'pwd'
                     sh 'trivy image my-nginx-html'
                 }
             }
