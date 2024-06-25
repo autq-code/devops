@@ -26,6 +26,7 @@ pipeline {
         stage('Scan Docker Image') {
             steps {
                 script {
+                sh 'pwd'    
                 sh '''
                     if ! command -v wget &> /dev/null
                     then
