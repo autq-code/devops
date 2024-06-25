@@ -30,7 +30,7 @@ pipeline {
                     sh '''
                     if ! command -v trivy &> /dev/null
                     then
-                        wget https://github.com/aquasecurity/trivy/releases/download/v0.40.0/trivy_0.40.0_Linux-64bit.tar.gz
+                        curl -fsSLO https://github.com/aquasecurity/trivy/releases/download/v0.40.0/trivy_0.40.0_Linux-64bit.tar.gz
                         tar zxvf trivy_0.40.0_Linux-64bit.tar.gz
                         sudo mv trivy /usr/local/bin/
                     fi
