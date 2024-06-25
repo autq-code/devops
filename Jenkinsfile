@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE_URL = 'http://your-sonarqube-server-url'
-        SONARQUBE_TOKEN = credentials('your-sonarqube-token-id')
+        SONARQUBE_URL = 'http://localhost:9000'
+        SONARQUBE_TOKEN = credentials('sqp_b5e363e316813eef6bf04a933a3628eca3d71943')
     }
 
     stages {
@@ -68,10 +68,7 @@ pipeline {
 
     post {
         always {
-            node {
-                cleanWs()
-            }
+            cleanWs()
         }
     }
 }
-
