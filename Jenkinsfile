@@ -51,7 +51,7 @@ pipeline {
                         sonar-scanner \
                           -Dsonar.projectKey=my-nginx-html \
                           -Dsonar.sources=hola-mundo \
-                          -Dsonar.host.url=http://localhost:9000 \
+                          -Dsonar.host.url=http://172.24.0.4:9000 \
                           -Dsonar.login=sqp_b5e363e316813eef6bf04a933a3628eca3d71943
                         '''
                     }
