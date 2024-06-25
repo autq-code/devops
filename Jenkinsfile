@@ -38,7 +38,7 @@ pipeline {
                     fi
                     '''
                     // Escanear la imagen Docker con Trivy
-                    sh 'trivy image my-nginx-html'
+                    sh 'trivy image --vuln-type os my-nginx-html'
                 }
             }
         }
