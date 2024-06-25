@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        SONARQUBE_URL = 'http://172.24.0.4:9000'
+        SONARQUBE_TOKEN = credentials('sqp_b5e363e316813eef6bf04a933a3628eca3d71943')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -41,6 +46,19 @@ pipeline {
                 }
             }
         }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh 'sonar-scanner \
+                        -Dsonar.projectKey=my-project-key \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=$SONARQUBE_URL \
+                        -Dsonar.login=$SONARQUBE_TOKEN'
+                }
+            }
+        }
+
         stage('Deploy') {
             steps {
                 script {
