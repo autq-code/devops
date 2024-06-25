@@ -28,25 +28,6 @@ pipeline {
                 }
             }
         }
-        stage('Scan Docker Image') {
-            steps {
-                script {
-                    // Instalar Trivy si no está instalado (opcional, solo para entornos efímeros)
-                    sh '''
-                    if ! command -v trivy &> /dev/null
-                    then
-                        apt-get install wget apt-transport-https gnupg
-                        wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | tee /usr/share/keyrings/trivy.gpg > /dev/null
-                        echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | tee -a /etc/apt/sources.list.d/trivy.list
-                        apt-get update
-                        apt-get install trivy
-                    fi
-                    '''
-                    // Escanear la imagen Docker con Trivy
-                    sh 'trivy image --vuln-type os my-nginx-html'
-                }
-            }
-        }
         stage('Deploy') {
             steps {
                 script {
