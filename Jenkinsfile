@@ -47,23 +47,6 @@ pipeline {
                 }
             }
         }
-        stage('Scan with SonarQube') {
-            steps {
-                script {
-                    // Escanear los archivos HTML con SonarQube
-                    withSonarQubeEnv('SonarQube') { // 'SonarQube' es el nombre del servidor SonarQube configurado en Jenkins
-                        sh '''
-                        sonar-scanner -X \
-                          -Dsonar.projectKey=my-nginx-html \
-                          -Dsonar.sources=hola-mundo \
-                          -Dsonar.host.url=http://172.25.0.4:9000 \
-                          -Dsonar.login=sqp_55d92808ff7e8f6e0bfcec5976f644e100c9d93e \
-                          -Dsonar.ws.timeout=60
-                        '''
-                    }
-                }
-            }
-        }
         stage('Deploy') {
             steps {
                 script {
