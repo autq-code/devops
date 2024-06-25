@@ -23,6 +23,24 @@ pipeline {
                 }
             }
         }
+        stage('Scan Docker Image') {
+            steps {
+                script {
+                    // Instalar Trivy si no está instalado (opcional, solo para entornos efímeros)
+                    sh '''
+                    if ! command -v trivy &> /dev/null
+                    then
+                        wget https://github.com/aquasecurity/trivy/releases/download/v0.40.0/trivy_0.40.0_Linux-64bit.tar.gz
+                        tar zxvf trivy_0.40.0_Linux-64bit.tar.gz
+                        sudo mv trivy /usr/local/bin/
+                    fi
+                    '''
+
+                    // Escanear la imagen Docker con Trivy
+                    sh 'trivy image my-nginx-html'
+                }
+            }
+        }
         stage('Deploy') {
             steps {
                 script {
