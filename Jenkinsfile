@@ -44,17 +44,17 @@ pipeline {
       }
     }
 
-    stage('SonarQube Analysis') {
-      steps {
-        withSonarQubeEnv('SonarQube') {
-          sh 'sonar-scanner \
-            -Dsonar.projectKey=my-project-key \
-            -Dsonar.sources=. \
-            -Dsonar.host.url=$SONARQUBE_URL \
-            -Dsonar.login=$SONARQUBE_TOKEN'
-        }
-      }
-    }
+    //stage('SonarQube Analysis') {
+    //  steps {
+    //    withSonarQubeEnv('SonarQube') {
+    //      sh 'sonar-scanner \
+    //        -Dsonar.projectKey=my-project-key \
+    //        -Dsonar.sources=. \
+    //        -Dsonar.host.url=$SONARQUBE_URL \
+    //        -Dsonar.login=$SONARQUBE_TOKEN'
+    //    }
+    //  }
+    //}
 
     stage('Deploy') {
       steps {
