@@ -48,7 +48,7 @@ pipeline {
                     // Escanear los archivos HTML con SonarQube
                     withSonarQubeEnv('SonarQube') { // 'SonarQube' es el nombre del servidor SonarQube configurado en Jenkins
                         sh '''
-                        sonar-scanner \
+                        sonar-scanner -X \
                           -Dsonar.projectKey=my-nginx-html \
                           -Dsonar.sources=hola-mundo \
                           -Dsonar.host.url=http://localhost:9000 \
