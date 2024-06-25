@@ -27,6 +27,7 @@ pipeline {
             steps {
                 script {
                     // Instalar Trivy si no está instalado (opcional, solo para entornos efímeros)
+                    sh 'pwd'
                     sh '''
                     if ! command -v trivy &> /dev/null
                     then
