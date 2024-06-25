@@ -8,13 +8,13 @@ pipeline {
                     // Clona el repositorio y muestra la estructura de directorios para depuración
                     git branch: 'main', url: 'https://github.com/autq-code/devops.git'
                     sh 'ls -l'
-                    sh 'ls -l devops/hola-mundo'
+                    sh 'ls -l hola-mundo'
                 }
             }
         }
         stage('Build Docker Image') {
             steps {
-                dir('devops/hola-mundo') {  // Ajustar la ruta según la estructura de tu repositorio
+                dir('hola-mundo') {  // Ajustar la ruta según la estructura de tu repositorio
                     script {
                         // Muestra la estructura del directorio actual para depuración
                         sh 'ls -l'
